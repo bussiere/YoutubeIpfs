@@ -1,0 +1,29 @@
+<html>
+<body>
+It's a proof of concept & dirty <br>
+
+enter Youtube Url here :<br>
+<form action="../" method="post">
+ {% csrf_token %}
+<input type="text" name="url" maxlength="100" size="100"><br>
+ <input type="submit" value="Submit">
+</form>
+Et revenez quand quelques minutes
+Come back in few minutes
+<br>
+{{ retour |safe  }}
+<br>
+Done with :<br>
+<a href="https://ipfs.io/">IPFS (use it )</a> & <a href="https://rg3.github.io/youtube-dl/">youtube-dl </a><br>
+done by <a href="http://www.github.com/bussiere">bussiere</a><br>
+
+Les dernieres videos rajoutes (last videos) : <br>
+Saves them as Video.mp4 Enregistrer les sous Video.mp4<br>
+
+{% for yipfs in liste %}
+        {{ yipfs.date_sys_added}}  <a href="{{ yipfs.youtube.url }}">{{ yipfs.youtube.url }}</a> DL HERE : <A HREF="http://gateway.ipfs.io/ipfs/{{ yipfs.ipfs.hash_ipfs }}">{{ yipfs.ipfs.hash_ipfs }}</A> Or here : <A HREF="http://37.187.127.74:8080/ipfs/{{ yipfs.ipfs.hash_ipfs }}">{{ yipfs.ipfs.hash_ipfs }}</A>  
+<br>
+{% endfor %}
+
+</body>
+</html>
